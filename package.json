@@ -1,0 +1,24 @@
+{
+  "name": "github-release-downloader",
+  "version": "0.0.1",
+  "description": "Gets latest release download URL using the GitHub Releases API. It also shows when it was released and the download count.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ProphetDaniel/github-release-downloader.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Release",
+    "Downloader"
+  ],
+  "author": "Prophet Daniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProphetDaniel/github-release-downloader/issues"
+  },
+  "homepage": "https://github.com/ProphetDaniel/github-release-downloader#readme"
+}
