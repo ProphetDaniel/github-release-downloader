@@ -11,6 +11,7 @@ import {GetLatestGitHubReleaseInfo} from "../src/GetLatestGitHubReleaseInfo"
 describe('Array', function() {
   it('should get repo info', async function() {
     let info = await GetLatestGitHubReleaseInfo("ethereumproject/go-ethereum")
-    assert(true)
+    assert(info.releaseName.startsWith('Ethereum Classic Geth'))
+    console.log(info.downloadUrl)
   });
 });
