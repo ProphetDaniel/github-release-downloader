@@ -12,8 +12,12 @@ require('babel-polyfill');
 require('babel-register');
 
 (async () => {
-  let info = await uGetLatestGitHubReleaseInfo("ethereumproject/go-ethereum");
-  console.log(info.releaseName + " was updated " + info.timeAgo + " and downloaded " + info.downloadCount.toLocaleString() + " times.",);
-  console.log(info.downloadUrl);
+    let info = await GetLatestGitHubReleaseInfo("ethereumproject/go-ethereum")
+    assert(info.releaseName.startsWith('Ethereum Classic Geth'))
+    let matchesPattern = (url) => {
+      return url.endsWith("tar.gz") && url.includes("linux");
+    };
+    let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
+    console.log(selectedDownload.url + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.")
 })();
 ```
