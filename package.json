@@ -1,5 +1,5 @@
 {
-  "name": "github-release-downloader",
+  "name": "github-release-download",
   "version": "0.0.1",
   "description": "Gets latest release download URL using the GitHub Releases API. It also shows when it was released and the download count.",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ProphetDaniel/github-release-downloader.git"
+    "url": "git+ssh://git@github.com/ProphetDaniel/github-release-download.git"
   },
   "keywords": [
     "GitHub",
@@ -20,9 +20,9 @@
   "author": "Prophet Daniel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ProphetDaniel/github-release-downloader/issues"
+    "url": "https://github.com/ProphetDaniel/github-release-download/issues"
   },
-  "homepage": "https://github.com/ProphetDaniel/github-release-downloader#readme",
+  "homepage": "https://github.com/ProphetDaniel/github-release-download#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",

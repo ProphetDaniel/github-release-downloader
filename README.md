@@ -1,4 +1,4 @@
-# GitHub Release Downloader
+# GitHub Release Download
 
 ## How to install
 ```bash
@@ -7,7 +7,7 @@ npm install github-release-downloader
 
 ## How to use
 ```javascript
-import {GetLatestGitHubReleaseInfo} from 'github-release-downloader';
+import {GetLatestGitHubReleaseInfo} from 'github-release-download';
 require('babel-polyfill');
 require('babel-register');
 
