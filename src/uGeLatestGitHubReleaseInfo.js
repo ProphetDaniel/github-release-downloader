@@ -1,7 +1,4 @@
-async function GetLatestGitHubReleaseInfo(repo) {
-  const jsdom = require("jsdom");
-  const dom = new jsdom.JSDOM(`<!DOCTYPE html>`);
-  var $ = require("jquery")(dom.window);
+async function uGetLatestGitHubReleaseInfo(repo) {
   return new Promise(resolve => {
     $.getJSON("https://api.github.com/repos/"+repo+"/releases/latest").done(function(release) {
       var asset = release.assets[0];
@@ -30,5 +27,5 @@ async function GetLatestGitHubReleaseInfo(repo) {
 }
 
 module.exports = {
-  GetLatestGitHubReleaseInfo: GetLatestGitHubReleaseInfo,
+  uGetLatestGitHubReleaseInfo: uGetLatestGitHubReleaseInfo,
 };
