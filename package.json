@@ -1,8 +1,8 @@
 {
-  "name": "github-release-download",
-  "version": "0.0.1",
+  "name": "github-release-info-downloader",
+  "version": "0.0.2",
   "description": "Gets latest release download URL using the GitHub Releases API. It also shows when it was released and the download count.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "mocha --require babel-polyfill --require babel-register",
     "dev": "webpack --mode development",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ProphetDaniel/github-release-download.git"
+    "url": "git+ssh://git@github.com/ProphetDaniel/github-release-info-downloader.git"
   },
   "keywords": [
     "GitHub",
@@ -20,9 +20,9 @@
   "author": "Prophet Daniel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ProphetDaniel/github-release-download/issues"
+    "url": "https://github.com/ProphetDaniel/github-release-info-downloader/issues"
   },
-  "homepage": "https://github.com/ProphetDaniel/github-release-download#readme",
+  "homepage": "https://github.com/ProphetDaniel/github-release-info-downloader#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -34,7 +34,6 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
-    "download": "^6.2.5",
     "jquery": "^3.3.1",
     "jsdom": "^11.8.0"
   }

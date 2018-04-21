@@ -4,25 +4,26 @@ async function GetLatestGitHubReleaseInfo(repo) {
   var $ = require("jquery")(dom.window);
   return new Promise(resolve => {
     $.getJSON("https://api.github.com/repos/"+repo+"/releases/latest").done(function(release) {
-      var asset = release.assets[0];
-      var downloadCount = 0;
-      for (var i = 0; i < release.assets.length; i++) {
-        downloadCount += release.assets[i].download_count;
-      }
-      var oneHour = 60 * 60 * 1000;
-      var oneDay = 24 * oneHour;
-      var dateDiff = new Date() - new Date(asset.updated_at);
-      var timeAgo;
-      if (dateDiff < oneDay)
-        timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
-      else
-        timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
-      var returnStructVar = {
-        timeAgo: timeAgo,
+      let tuppleList = [];
+      let IsRelease = (url) => {
+        return !url.endsWith("sig") && !url.endsWith("asc");
+      };
+      let oneHour = 60 * 60 * 1000;
+      let oneDay = 24 * oneHour;
+      release.assets.filter(asset => IsRelease(asset.browser_download_url))
+        .forEach((casset) => {
+          let dateDiff = new Date() - new Date(casset.updated_at);
+          let timeAgo;
+          if (dateDiff < oneDay)
+            timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
+          else
+            timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
+          tuppleList.push({count: casset.download_count, url: casset.browser_download_url, timeAgo: timeAgo})
+        })
+
+      let returnStructVar = {
         releaseName: release.name,
-        downloadUrl: asset.browser_download_url,
-        downloadCount: downloadCount,
-        releaseInfo: release.name + " was updated " + timeAgo + " and downloaded " + downloadCount.toLocaleString() + " times.",
+        downloadList: tuppleList
       }
       resolve(returnStructVar);
     });

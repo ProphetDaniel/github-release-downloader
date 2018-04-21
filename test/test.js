@@ -5,7 +5,10 @@ describe('Array', function() {
   it('should get repo info', async function() {
     let info = await GetLatestGitHubReleaseInfo("ethereumproject/go-ethereum")
     assert(info.releaseName.startsWith('Ethereum Classic Geth'))
-    console.log(info.releaseName + " was updated " + info.timeAgo + " and downloaded " + info.downloadCount.toLocaleString() + " times.")
-    console.log(info.downloadUrl);
+    let matchesPattern = (url) => {
+      return url.endsWith("tar.gz") && url.includes("linux");
+    };
+    let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
+    console.log(selectedDownload.url + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.")
   });
 });
