@@ -60,6 +60,9 @@ module.exports = {
 };
 ```
 
+[![Run Code Snippet Badge](https://img.shields.io/badge/run-code--snippet-green.svg?longCache=true&style=for-the-badge)](https://rawgit.com/ProphetDaniel/github-release-info-downloader/master/test/index.html)
+
+
 #### Legacy Javascript `index.js`
 ```javascript
 var ghReleaseInfo = require('github-release-info-downloader');
