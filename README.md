@@ -31,6 +31,8 @@ npm install github-release-downloader
 <p class="release-info"></p>
 ```
 
+[![Run Code Snippet Badge](https://img.shields.io/badge/run-code--snippet-green.svg?longCache=true&style=for-the-badge)](https://rawgit.com/ProphetDaniel/github-release-info-downloader/master/test/index.html)
+
 ### From javascript
 For the jquery part to work (last 3 statements with $ sign)
 Provide a minimum html file as follows:
@@ -59,9 +61,6 @@ module.exports = {
   }
 };
 ```
-
-[![Run Code Snippet Badge](https://img.shields.io/badge/run-code--snippet-green.svg?longCache=true&style=for-the-badge)](https://rawgit.com/ProphetDaniel/github-release-info-downloader/master/test/index.html)
-
 
 #### Legacy Javascript `index.js`
 ```javascript
