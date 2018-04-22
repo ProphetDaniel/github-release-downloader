@@ -7,7 +7,7 @@ npm install github-release-downloader
 
 ## How to use
 ```html
-<script src="../dist/ghReleaseInfo.min.js" type="text/javascript"></script>
+<script src="https://cdn.rawgit.com/ProphetDaniel/github-release-info-downloader/8181dd10/dist/ghReleaseInfo.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script type="text/javascript">

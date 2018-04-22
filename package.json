@@ -1,6 +1,6 @@
 {
   "name": "github-release-info-downloader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets latest release download URL using the GitHub Releases API. It also shows when it was released and the download count.",
   "main": "src/index.js",
   "scripts": {
