@@ -32,7 +32,35 @@ npm install github-release-downloader
 ```
 
 ### From javascript
-#### Legacy Javascript
+For the jquery part to work (last 3 statements with $ sign)
+Provide a minimum html file as follows:
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="../dist/main.js" type="text/javascript"></script>
+
+<a class="download">Download</a>
+<p class="release-info"></p>
+``` 
+
+where `main.js` is the resulting bundle from webpack with the following `webpack.config.js`
+```javascript
+module.exports = {
+  entry: ['babel-polyfill', './src/index.js'],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+```
+
+#### Legacy Javascript `index.js`
 ```javascript
 var ghReleaseInfo = require('github-release-info-downloader');
 
@@ -52,7 +80,7 @@ ghReleaseInfo.get("ethereumproject/go-ethereum").then(function(info){
 });
 ```
 
-#### with async/await
+#### with async/await `index.js`
 ```javascript
 import * as ghReleaseInfo from 'github-release-info-downloader';
 
