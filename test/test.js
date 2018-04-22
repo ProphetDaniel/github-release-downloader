@@ -1,14 +1,18 @@
 var assert = require('assert');
-import {GetLatestGitHubReleaseInfo} from "../src/GetLatestGitHubReleaseInfo"
+var ghReleaseInfo = require('../dist/ghReleaseInfo.min');
 
-describe('Array', function() {
+describe('Get release info suite', function() {
   it('should get repo info', async function() {
-    let info = await GetLatestGitHubReleaseInfo("ethereumproject/go-ethereum")
-    assert(info.releaseName.startsWith('Ethereum Classic Geth'))
+    let info = await ghReleaseInfo.get("ethereumproject/go-ethereum")
     let matchesPattern = (url) => {
       return url.endsWith("tar.gz") && url.includes("linux");
     };
+    let downloadName = (url) => {
+      return url.slice(url.lastIndexOf('/')+1)
+    };
     let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
-    console.log(selectedDownload.url + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.")
+    let downloadFileName = downloadName(selectedDownload.url)
+    // console.log(downloadFileName+ " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.")
+    assert(downloadFileName.startsWith('geth-classic-linux'))
   });
 });

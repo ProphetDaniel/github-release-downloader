@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 var DIST        = __dirname + '/dist';
 var FILE = 'ghReleaseInfo';
 
@@ -10,9 +11,13 @@ module.exports = {
     library: FILE,
     libraryTarget: 'umd',
     path: DIST,
-    filename: FILE+'.js'
+    filename: FILE+'.min.js'
   },
-  devtool: 'source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
+  ],
   module: {
     rules: [
       {

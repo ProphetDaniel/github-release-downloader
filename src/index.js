@@ -1,15 +1,19 @@
-import {uGetLatestGitHubReleaseInfo} from "./uGeLatestGitHubReleaseInfo"
+var core = require('./core');
 
-(async () => {
-  let info = await uGetLatestGitHubReleaseInfo("ethereumproject/go-ethereum");
-  let matchesPattern = (url) => {
-    return url.endsWith("tar.gz") && url.includes("linux");
-  };
-  let downloadName = (url) => {
-    return url.slice(url.lastIndexOf('/')+1)
-  };
-  let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
-  $(".download").attr("href", selectedDownload.url);
-  $(".release-info").text(downloadName(selectedDownload.url) + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.");
-  $(".release-info").fadeIn("slow");
-})();
+/**
+ * ghReleaseInfo.js factory function. Creates a new instance of ghReleaseInfo.js
+ *
+ */
+function create (config) {
+  // create a new ghReleaseInfo.js instance
+  var ghReleaseInfo = core.create(config);
+  ghReleaseInfo.create = create;
+
+  // import data types, functions, constants, expression parser, etc.
+  ghReleaseInfo['import'](require('./lib'));
+
+  return ghReleaseInfo;
+}
+
+// return a new instance of ghReleaseInfo.js
+module.exports = create();
