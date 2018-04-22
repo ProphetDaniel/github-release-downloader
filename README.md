@@ -6,8 +6,9 @@ npm install github-release-downloader
 ```
 
 ## How to use
+### From html page
 ```html
-<script src="https://cdn.rawgit.com/ProphetDaniel/github-release-info-downloader/8181dd10/dist/ghReleaseInfo.min.js" type="text/javascript"></script>
+<script src="https://rawgit.com/ProphetDaniel/github-release-info-downloader/master/dist/ghReleaseInfo.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -28,4 +29,46 @@ npm install github-release-downloader
 
 <a class="download">Download</a>
 <p class="release-info"></p>
+```
+
+### From javascript
+#### Legacy Javascript
+```javascript
+var ghReleaseInfo = require('github-release-info-downloader');
+
+// use the ghReleaseInfo.js libary
+ghReleaseInfo.get("ethereumproject/go-ethereum").then(function(info){
+  let matchesPattern = (url) => {
+    return url.endsWith("tar.gz") && url.includes("linux");
+  };
+  let downloadName = (url) => {
+    return url.slice(url.lastIndexOf('/')+1)
+  };
+  
+  let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
+  $(".download").attr("href", selectedDownload.url);
+  $(".release-info").text(downloadName(selectedDownload.url) + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.");
+  $(".release-info").fadeIn("slow");
+});
+```
+
+#### with async/await
+```javascript
+import * as ghReleaseInfo from 'github-release-info-downloader';
+
+(async () => {
+  let matchesPattern = (url) => {
+    return url.endsWith("tar.gz") && url.includes("linux");
+  };
+  let downloadName = (url) => {
+    return url.slice(url.lastIndexOf('/')+1)
+  };
+  
+  // use the ghReleaseInfo.js libary
+  let info = await ghReleaseInfo.get("ethereumproject/go-ethereum");
+  let selectedDownload = info.downloadList.filter(download => matchesPattern(download.url)).pop()
+  $(".download").attr("href", selectedDownload.url);
+  $(".release-info").text(downloadName(selectedDownload.url) + " was updated " + selectedDownload.timeAgo + " and downloaded " + selectedDownload.count.toLocaleString() + " times.");
+  $(".release-info").fadeIn("slow");
+})()
 ```
