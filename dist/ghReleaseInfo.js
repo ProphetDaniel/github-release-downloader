@@ -1527,6 +1527,18 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./node_modules/xhr2/lib/browser.js":
+/*!******************************************!*\
+  !*** ./node_modules/xhr2/lib/browser.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = XMLHttpRequest;
+
+
+/***/ }),
+
 /***/ "./src/core.js":
 /*!*********************!*\
   !*** ./src/core.js ***!
@@ -2683,6 +2695,8 @@ exports.factory = factory;
 
 "use strict";
 
+
+var XMLHttpRequest = __webpack_require__(/*! xhr2 */ "./node_modules/xhr2/lib/browser.js");
 
 function loadJSON(path, success, error) {
   var xhr = new XMLHttpRequest();

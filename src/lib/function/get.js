@@ -1,4 +1,5 @@
 'use strict';
+var XMLHttpRequest = require("xhr2");
 
 function loadJSON(path, success, error)
 {
