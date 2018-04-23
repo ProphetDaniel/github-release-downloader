@@ -2,7 +2,7 @@
 
 ## How to install
 ```bash
-npm install github-release-downloader
+npm install github-release-info-downloader
 ```
 
 ## How to use
